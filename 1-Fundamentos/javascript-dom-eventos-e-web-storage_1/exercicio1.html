@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<style>
+  .green {
+    color: green;
+  }
+</style>
+<html>
+  <body>
+    <h2 id="page-title">Título</h2>
+    <p id="paragraph" class="green">Dê uma cor para este parágrafo!</p>
+    <h4 id="subtitle">Subtítulo</h4>
+    <p id="second-paragraph" class="green">Segundo parágrafo!</p>
+
+    <script>
+      var paragraph = document.getElementById("paragraph");
+      paragraph.style.color = "red";
+
+      var titulo = document.getElementById('page-title');
+      titulo.textContent = "Interestelar";
+
+      var secondParagraph = document.getElementById("second-paragraph");
+      secondParagraph.textContent = "Este é o novo segundo parágrafo usando textContent";
+
+      document.getElementById('subtitle').innerText = "Este é um novo subtitulo sendo feito por meio do Javascript usando innerText";
+    
+    </script>
+  </body>
+</html>

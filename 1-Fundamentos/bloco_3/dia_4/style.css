@@ -1,0 +1,54 @@
+*{
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+  }
+
+ul {
+    list-style: none;
+}
+
+.first {
+    background-color: rgb(235, 200, 84);
+    font-size: 20px;
+    height: 50px;
+    text-align: center;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.second {
+    background-color: rgb(219, 219, 219);
+    font-size: 20px;
+    height: 50px;
+    text-align: center;
+    width: 300px;
+}
+
+.third {
+    background-color: rgb(170, 142, 106);
+    font-size: 20px;
+    height: 50px;
+    text-align: center;
+    width: 300px;
+}
+
+.third, .second {
+    display: inline-block;
+}
+
+.podium ul li {
+    text-align: center;
+    border-radius: 10px;
+}
+
+.podium {
+
+}
+
+.awards li {
+    display: inline-block;
+}

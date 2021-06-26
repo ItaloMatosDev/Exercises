@@ -1,0 +1,40 @@
+h1 {
+    font-size: 65px;
+    color: orange;
+    font-family: sans-serif;
+}
+
+body{
+    background-color: rgb(255, 400, 200);
+    font-size: 16px;
+}
+
+ul {
+    background-color: blueviolet;
+}
+
+p{
+    font-weight: 600;
+    font-size: 3em;
+    font-family: "Lucida Console", "Courier New", monospace;
+}
+.muda-cor {
+    background-color: rgb(19, 200, 255);
+}
+
+#yellow {
+    background-color: yellow;
+    font-style: oblique;
+    text-decoration: overline;
+}
+
+#red {
+    background-color: red;
+    text-decoration: line-through;
+}
+
+#brown{
+    background-color: brown;
+    font-style: italic;
+    text-decoration: underline overline;
+}

@@ -1,0 +1,82 @@
+.caixa {
+    color: white;
+    display: inline-block;
+    line-height: 50px;
+    text-align: center;
+    vertical-align: top;
+}
+
+.width-and-height {
+    height: 50px;
+    width: 50px;
+}
+
+.padding {
+    padding: 20px;
+}
+
+.margin {
+    margin: 30px;
+}
+
+.border {
+    border: 5px solid black;
+}
+
+.super-mario{
+    width: 300px;
+    position: absolute;
+    z-index: 1;
+}
+
+.goomba {
+    width: 300px;
+    position: absolute;
+    top: 520px;
+    z-index: 2;
+}
+
+.bowser {
+    width: 300px;
+    left: 800px;
+    top: 150px;
+    position: absolute;
+    z-index: 3;
+}
+
+.word {
+    left: 530px;
+    font-size: 1.5em;
+    top: 120px;
+    font-family: fantasy;
+    position: absolute;
+    z-index: 5;
+}
+
+.baloon {
+    left: 500px;
+    position: absolute;
+    z-index: 4;
+}
+
+h1 {
+    text-align: center;
+}
+
+p {
+    text-align: center;
+}
+
+li:hover{
+    width: auto;
+    transition: 1s;
+    background-color: rgb(153, 0, 255);
+}
+
+li:active {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+li {
+    list-style: none;
+}
