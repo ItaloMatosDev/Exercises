@@ -1,0 +1,18 @@
+-- Monte um query que exiba:
+-- A média de duração dos filmes e dê o nome da coluna de 'Média de Duração';
+-- A duração mínima dos filmes como 'Duração Mínima';
+-- A duração máxima dos filmes como 'Duração Máxima';
+-- A soma de todas as durações como 'Tempo de Exibição Total';
+-- E finalmente, a quantidade total de filmes cadastrados na tabela sakila.film como 'Filmes Registrados'.
+
+SELECT AVG(length) as 'Média de duração' FROM sakila.film;
+
+SELECT MIN(length) as 'Duração mínima' FROM sakila.film;
+
+SELECT MAX(length) as 'Duração máxima' FROM sakila.film;
+
+SELECT sum(length) as 'Tempo de Exibição Total' FROM sakila.film;
+
+SELECT COUNT(title) as 'Filmes registrados' FROM sakila.film;
+
+SELECT * FROM sakila.film;
