@@ -65,7 +65,7 @@ const isNonEmptyString = (value) => {
 
 const isValid = (firstName, middleName, lastName) => {
   if (middleName && typeof middleName !== 'string') return false;
-
+  
   return isNonEmptyString(firstName) && isNonEmptyString(lastName);
 };
 
@@ -74,9 +74,27 @@ const create = async (firstName, middleName, lastName) =>
     .then((db) => db.collection('authors').insertOne({ firstName, middleName, lastName }))
     .then(result => getNewAuthor({ id: result.insertedId, firstName, middleName, lastName }));
 
+const findByName = async (firstName, middleName, lastName) => {
+  // Determinamos se devemos buscar com ou sem o nome do meio
+  const query = middleName ? { firstName, middleName, lastName }
+  : { firstName, lastName };
+
+  // Executamos a consulta e retornamos o resultado
+  const author = await connection()
+    .then((dd) => db.collection('authors').findOne(query));
+
+  // Caso nenhum autor seja encontrado, devolvemos null
+  if (!author) return null;
+
+  return getNewAuthor(author);
+
+
+};
+
 module.exports = {
   getAll,
   findById,
   isValid,
   create,
+  findByName
 };
