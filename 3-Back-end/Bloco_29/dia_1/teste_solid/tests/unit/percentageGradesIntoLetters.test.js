@@ -78,7 +78,7 @@ describe('Testando a função "percentageGradesIntoLetters"', function () {
   });
 
   describe('quando a nota é maior ou igual a 0.1 e menor que 0.6', function () {
-    it('retorna "F"', function () {
+    it('retorna "E"', function () {
       const student = {
         name: 'Lee',
         disciplines: [
@@ -90,7 +90,7 @@ describe('Testando a função "percentageGradesIntoLetters"', function () {
         disciplines: [{ letterGrade }],
       } = percentageGradesIntoLetters(student);
 
-      expect(letterGrade).to.be.equals('F');
+      expect(letterGrade).to.be.equals('E');
     });
   });
 

@@ -1,22 +1,43 @@
-// ./index.js
+/* Apoio para a função `getGradeLetter`, lembraremos disso mais a frente */
+const GRADE_DICT = {
+  0.9: 'A',
+  0.8: 'B',
+  0.7: 'C',
+  0.6: 'D',
+  0.1: 'E',
+};
+
+const gradeKeys = Object.keys(GRADE_DICT);
+
+/* Função menor para remover o uso excessivo de `if{}else`s */
+const getGradeLetter = (gradeNumber) => {
+  let letterGrade = 'F';
+
+  for (let i = 0; i < gradeKeys.length; i += 1) {
+    if (gradeNumber >= gradeKeys[i]) {
+      letterGrade = GRADE_DICT[gradeKeys[i]];
+      break;
+    }
+  }
+
+  return letterGrade;
+};
+
+/* Coletar notas */
+const getLetterGrades = ({ name, grade }) => ({
+  name,
+  grade,
+  letterGrade: getGradeLetter(grade) });
 
 /* "Converter" */
-const percentageGradesIntoLetters = ({ name, disciplines }) => ({
+const percentageGradesIntoLetters = ({ name, disciplines, school }) => ({
   name,
-  disciplines: disciplines.map(({ grade }) => {
-    let letterGrade;
-    if (grade >= 0.9) letterGrade = 'A';
-    else if (grade >= 0.8) letterGrade = 'B';
-    else if (grade >= 0.7) letterGrade = 'C';
-    else if (grade >= 0.6) letterGrade = 'D';
-    else letterGrade = 'F';
-
-    return { name, grade, letterGrade };
-  }) });
+  disciplines: disciplines.map(getLetterGrades),
+  school });
 
 /* "Determinar" */
-const approvedStudents = ({ disciplines }) =>
-  disciplines.every(({ grade }) => grade > 0.7);
+const approvedStudents = (disciplines, { approvalGrade }) =>
+  disciplines.every(({ grade }) => grade > approvalGrade);
 
 /* "Atualizar" */
 const updateApprovalData = ({ name: studentName, disciplines }) => {
@@ -26,10 +47,20 @@ const updateApprovalData = ({ name: studentName, disciplines }) => {
     console.log(`${name}: ${letterGrade}`));
 };
 
+/* Apoio para a função `setApproved` */
+const SCHOOL_DATA = {
+  Standard: {
+    approvalGrade: 0.7,
+  },
+  Hogwarts: {
+    approvalGrade: 0.8,
+  },
+};
+
 function setApproved(students) {
   students
     .map(percentageGradesIntoLetters)
-    .filter(approvedStudents)
+    .filter(({ disciplines, school }) => approvedStudents(disciplines, SCHOOL_DATA[school]))
     .map(updateApprovalData);
 }
 
@@ -40,9 +71,32 @@ function setApproved(students) {
   Não se esqueça que é necessário exportar ao final as
   funções para que você possa testa-las de forma unitária
 */
+
+const students = [
+  {
+    name: 'Lee',
+    school: 'Standard',
+    disciplines: [
+      { name: 'matemática', grade: 0.8 },
+      { name: 'história', grade: 0.9 },
+    ],
+  },
+  {
+    name: 'Albus',
+    school: 'Hogwarts',
+    disciplines: [
+      { name: 'divination', grade: 0.8 },
+      { name: 'potions', grade: 0.9 },
+    ],
+  },
+];
+
+setApproved(students);
+
 module.exports = {
   percentageGradesIntoLetters,
   approvedStudents,
   updateApprovalData,
   setApproved,
+  getLetterGrades,
 };
